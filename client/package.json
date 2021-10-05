@@ -9,7 +9,8 @@
     "build": "vite build",
     "serve": "vite preview",
     "format": "prettier --write \"**/*.{jsx,js,css,json,md}\"",
-    "json-server": "json-server --watch api/db.json  --port 3004"
+    "json-server": "json-server --watch api/db.json  --port 3004",
+    "proxy": "http://localhost:5000"
   },
   "author": "Michael Wanyoike <micwanyoike@gmail.com>",
   "repository": {
