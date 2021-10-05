@@ -38,6 +38,11 @@ app.get('/', (req, res)=>{
     initOrbit()
 })
 
+app.get('/helloworld', (req, res)=>{
+    console.log("helloworld test")
+    res.send({message: "hello world test"})
+})
+
 
 const PORT=process.env.PORT || 5000;
 
