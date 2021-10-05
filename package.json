@@ -1,0 +1,22 @@
+{
+  "name": "query_orbitdb",
+  "version": "1.0.0",
+  "description": "Patients info query based on OrbitDB",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaronli-uga/query_orbitdb.git"
+  },
+  "author": "qili",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaronli-uga/query_orbitdb/issues"
+  },
+  "homepage": "https://github.com/aaronli-uga/query_orbitdb#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
