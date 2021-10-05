@@ -50,6 +50,7 @@ function UserTable({ users }) {
       <td>{user.first_name}</td>
       <td>{user.last_name}</td>
       <td className="hover:underline">{user.email}</td>
+      <td>{user.age}</td>
       <td>{user.gender}</td>
       <td className="inline-flex border-none">
         <Link
@@ -92,6 +93,7 @@ function UserTable({ users }) {
             <th className="w-3/12">First Name</th>
             <th className="w-3/12">Last Name</th>
             <th className="w-3/12">Email</th>
+            <th className="w-3/12">Age</th>
             <th className="w-1/12">Gender</th>
             <th className="w-1/12">Action</th>
           </tr>

@@ -45,7 +45,8 @@ function UserForm({ user, submitText, submitAction }) {
           </div>
         </section>
 
-        <section className="field">
+        <section className="flex flex-col field md:flex-row">
+          <div>
           <label htmlFor="email">Email</label>
           <input
             type="email"
@@ -59,6 +60,19 @@ function UserForm({ user, submitText, submitAction }) {
               errors.email.type === 'pattern' &&
               'Provide a valid email address'}
           </span>
+          </div>
+          <div className="mt-2 md:mt-0 md:ml-2">
+          <label htmlFor="age">Age</label>
+          <input
+            type="number"
+            {...register('number', { required: true, })}
+          />
+          <span className="errors">
+            {errors.number &&
+              errors.number.type === 'required' &&
+              'Age is required'}
+          </span>
+          </div>
         </section>
 
         <section className="field">
