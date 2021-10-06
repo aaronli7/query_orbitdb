@@ -4,9 +4,9 @@ import { useQuery } from 'react-query'
 import UserTable from '../components/UserTable'
 import axios from 'axios'
 
-function BasicQuery() {
+function AgeQuery() {
   const fetchAllUsers = async () =>
-    await (await fetch('http://localhost:5000/showPatients')).json()
+    await (await fetch('http://localhost:5000/queryAge')).json()
 
   const { data, error, status } = useQuery('users', fetchAllUsers)
 
@@ -33,4 +33,4 @@ function BasicQuery() {
   )
 }
 
-export default BasicQuery
+export default AgeQuery

@@ -1,6 +1,7 @@
 import React from 'react'
 import {useState} from 'react'
 import { useQuery } from 'react-query'
+import { Link } from 'react-router-dom'
 
 import UserTable from '../components/UserTable'
 import axios from 'axios'
@@ -34,6 +35,13 @@ function BasicQuery() {
         <button className="bg-teal-800 border-teal-800 shadow-md text-white btn hover:bg-gray-100 hover:border-2 hover:text-teal-900"
             type="submit"> Query </button>
       </form>
+      <Link
+          to="/ageOldThan"
+          className="px-4 py-1 font-semibold text-teal-900 border-2 border-teal-700 rounded hover:border-none hover:bg-teal-800 hover:text-white"
+        >
+          Hard query
+      </Link>
+
       </div>
 
       <div>

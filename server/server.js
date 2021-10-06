@@ -42,7 +42,7 @@ async function showPatients(){
     return value
 }
 
-async function queryAge(age=0){
+async function queryAge(age=23){
     const db = await dbEHR.docs(dbName)
     await db.load()
     const value = await db.query((doc) => doc.age > age)
@@ -68,7 +68,10 @@ app.get('/showPatients', async (req, res)=>{
 app.get('/queryAge', async (req, res)=>{
     await initOrbit()
     console.log("Query the patients age")
-    const result = await queryAge(req.body.age)
+    // const result = await queryAge(req.body.age)
+
+    // hard query should be fixed. aran-lq
+    const result = await queryAge()
     console.log(result)
     // res.send({users: result})
     res.json(result)
