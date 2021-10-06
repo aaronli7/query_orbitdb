@@ -65,7 +65,7 @@ function UserForm({ user, submitText, submitAction }) {
           <label htmlFor="age">Age</label>
           <input
             type="number"
-            {...register('number', { required: true, })}
+            {...register('age', { required: true, })}
           />
           <span className="errors">
             {errors.number &&
@@ -75,7 +75,8 @@ function UserForm({ user, submitText, submitAction }) {
           </div>
         </section>
 
-        <section className="field">
+        <section className="flex flex-col field md:flex-row">
+          <div>
           <label htmlFor="gender">Gender</label>
           <select {...register('gender', { required: true })}>
             <option value=""></option>
@@ -85,6 +86,19 @@ function UserForm({ user, submitText, submitAction }) {
           <span className="errors">
             {errors.gender && 'Gender is required'}
           </span>
+          </div>
+          <div className="mt-2 md:mt-0 md:ml-27">
+          <label htmlFor="id">ID</label>
+          <input
+            type="number"
+            {...register('id', { required: true, })}
+          />
+          <span className="errors">
+            {errors.number &&
+              errors.number.type === 'required' &&
+              'Age is required'}
+          </span>
+          </div>
         </section>
 
         <div className="flex mt-8 justify-between">

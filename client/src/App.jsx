@@ -7,6 +7,7 @@ import { AppContextProvider } from './store/app-context'
 
 import Navbar from './layout/Navbar'
 import BasicQuery from './views/BasicQuery'
+import AgeQuery from './views/AgeQuery'
 import InfiniteQuery from './views/InfiniteQuery'
 import PaginatedQuery from './views/PaginatedQuery'
 import CreateUser from './views/CreateUser'
@@ -27,6 +28,9 @@ function App() {
             <Switch>
               <Route path="/" exact>
                 <BasicQuery />
+              </Route>
+              <Route path="/ageOldThan" exact>
+                <AgeQuery />
               </Route>
               <Route path="/paginated">
                 <PaginatedQuery />

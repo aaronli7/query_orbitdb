@@ -34,20 +34,6 @@ async function initOrbit(){
     }
 }
 
-async function orbitAdd(id,name,age){
-    
-    const db = await orbitDB.docs(dbName)
-    await db.load()
-    console.log(db.address.toString())
-    await db.put({'_id': id, firstName: fname, lastName, lname, age: age}, (err,res) =>{
-        if(err){
-            res.send({err: err})
-        }
-        else{
-            res.send({message: "Data added"})
-        }
-    })
-}
 
 async function showPatients(){
     const db = await dbEHR.docs(dbName)
@@ -63,19 +49,29 @@ async function queryAge(age=0){
     return value
 }
 
-app.get('/', async (req, res)=>{
-    initOrbit()
-})
+async function addPatient(info){
+    const db = await dbEHR.docs(dbName)
+    await db.load()
+    await db.put({'_id': info.id, first_name:info.first_name, last_name: info.last_name, Email: info.email, age: info.age, gender: info.gender})
+}
+
 
 app.get('/showPatients', async (req, res)=>{
+    await initOrbit()
     console.log("Query the patients info")
     const result = await showPatients()
     console.log(result)
-    // res.send({users:{result}})
+    // res.send({users: result})
     res.json(result)
 })
 
-app.get('/helloworld', (req, res)=>{
+app.post('/addPatient', async (req, res)=>{
+    console.log(`add new patient info: {req.body}`)
+    await addPatient(req.body)
+    res.send({message: "Add succeed"})
+})
+
+app.get('/helloworld', async (req, res)=>{
     console.log("helloworld test")
     res.send({message: "hello world test"})
 })

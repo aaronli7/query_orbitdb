@@ -46,10 +46,10 @@ function UserTable({ users }) {
       className="bg-white border border-cyan-800 hover:bg-lime-100 active:bg-lime-700 active:text-lime-100"
       key={index}
     >
-      <td>{user.id}</td>
+      <td>{user._id}</td>
       <td>{user.first_name}</td>
       <td>{user.last_name}</td>
-      <td className="hover:underline">{user.email}</td>
+      <td className="hover:underline">{user.Email}</td>
       <td>{user.age}</td>
       <td>{user.gender}</td>
       <td className="inline-flex border-none">
