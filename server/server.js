@@ -65,6 +65,15 @@ app.get('/showPatients', async (req, res)=>{
     res.json(result)
 })
 
+app.get('/queryAge', async (req, res)=>{
+    await initOrbit()
+    console.log("Query the patients age")
+    const result = await queryAge(req.body.age)
+    console.log(result)
+    // res.send({users: result})
+    res.json(result)
+})
+
 app.post('/addPatient', async (req, res)=>{
     console.log(`add new patient info: {req.body}`)
     await addPatient(req.body)
