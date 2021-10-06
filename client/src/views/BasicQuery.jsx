@@ -19,9 +19,20 @@ function BasicQuery() {
   return (
     <div>
       <h2 className="mb-4">Basic Query Example</h2>
-      <div className="flex items-center justify-between mb-4">
+      {/* <div className="flex items-center justify-between mb-4">
         <button className="px-4 py-1 font-semibold text-teal-900 border-2 border-teal-700 rounded hover:border-none hover:bg-teal-800 hover:text-white" onClick = {orbitInit}>orbitDBs Init</button><br/>
+      </div> */}
+      <div>
+      <form>
+        <label>
+          Query age older than:
+          <input type="number" name="age" />
+        </label>
+        <button className="bg-teal-800 border-teal-800 shadow-md text-white btn hover:bg-gray-100 hover:border-2 hover:text-teal-900"
+            type="submit"> Query </button>
+      </form>
       </div>
+
       <div>
         {status === 'error' && <div>{error.message}</div>}
 
