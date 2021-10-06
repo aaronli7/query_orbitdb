@@ -12,20 +12,26 @@ const dbName = 'EHR-db'
 
 // initialize the orbitdb database
 async function initOrbit(){
-    const ipfsOptions = { repo: './ipfs'}
-    const ipfs = await IPFS.create(ipfsOptions)
-    const db = await OrbitDB.createInstance(ipfs)
-
-    // some initial data
-    dbEHR = await db.docs(dbName)
-    await dbEHR.load()
-    console.log("db address:", dbEHR.address.toString())
-
-    await dbEHR.put({'_id': '1', first_name:'Siffre', last_name: 'Timmes', Email: 'stimmes0@nasa.gov', age: 18, gender: 'Male'})
-    await dbEHR.put({'_id': '2', first_name:'Fonzie', last_name: 'Coggen', Email: 'fcoggen1@weather.com', age: 20, gender: 'Female'})
-    await dbEHR.put({'_id': '3', first_name:'Shell', last_name: 'Kos', Email: 'skos2@prweb.com', age: 22, gender: 'Female'})
-    await dbEHR.put({'_id': '4', first_name:'Matthiew', last_name: 'Rasell', Email: 'mrasell3@oaic.gov.au', age: 24, gender: 'Female'})
-    await dbEHR.put({'_id': '5', first_name:'Phillipe', last_name: 'Sedgwick', Email: 'psedgwick4@sciencedirect.com', age: 26, gender: 'Male'})
+    if(dbEHR == undefined){
+        const ipfsOptions = { repo: './ipfs'}
+        const ipfs = await IPFS.create(ipfsOptions)
+        dbEHR = await OrbitDB.createInstance(ipfs)
+        // some initial data
+        db = await dbEHR.docs(dbName)
+        await db.load()
+        console.log("db address:", db.address.toString())
+    
+        await db.put({'_id': '1', first_name:'Siffre', last_name: 'Timmes', Email: 'stimmes0@nasa.gov', age: 18, gender: 'Male'})
+        await db.put({'_id': '2', first_name:'Fonzie', last_name: 'Coggen', Email: 'fcoggen1@weather.com', age: 20, gender: 'Female'})
+        await db.put({'_id': '3', first_name:'Shell', last_name: 'Kos', Email: 'skos2@prweb.com', age: 22, gender: 'Female'})
+        await db.put({'_id': '4', first_name:'Matthiew', last_name: 'Rasell', Email: 'mrasell3@oaic.gov.au', age: 24, gender: 'Female'})
+        await db.put({'_id': '5', first_name:'Phillipe', last_name: 'Sedgwick', Email: 'psedgwick4@sciencedirect.com', age: 26, gender: 'Male'})
+    }
+    else{
+        db = await dbEHR.docs(dbName)
+        await db.load()
+        console.log("db address:", db.address.toString())
+    }
 }
 
 async function orbitAdd(id,name,age){
@@ -43,16 +49,30 @@ async function orbitAdd(id,name,age){
     })
 }
 
+async function showPatients(){
+    const db = await dbEHR.docs(dbName)
+    await db.load()
+    const value = await db.get('')
+    return value
+}
 
-app.get('/', (req, res)=>{
+async function queryAge(age=0){
+    const db = await dbEHR.docs(dbName)
+    await db.load()
+    const value = await db.query((doc) => doc.age > age)
+    return value
+}
+
+app.get('/', async (req, res)=>{
     initOrbit()
 })
 
-app.get('/showPatients', (req, res)=>{
+app.get('/showPatients', async (req, res)=>{
     console.log("Query the patients info")
-    res.send({message: "Query hello world test"})
-    const all = dbEHR.query()
-    console.log(all)
+    const result = await showPatients()
+    console.log(result)
+    // res.send({users:{result}})
+    res.json(result)
 })
 
 app.get('/helloworld', (req, res)=>{
