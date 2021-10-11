@@ -106,3 +106,6 @@ dist
 # OrbitDB and IPFS
 orbitdb/
 ipfs/
+
+# VScode config
+.vscode/
