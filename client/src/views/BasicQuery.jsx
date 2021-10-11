@@ -12,7 +12,7 @@ function BasicQuery() {
   const [queryAge, setQueryAge] = useState(0)
 
   const fetchAllUsers = async () =>
-    await (await fetch('http://172.20.117.7:5000/showPatients')).json()
+    await (await fetch('http://localhost:5000/showPatients')).json()
 
   const { data, error, status } = useQuery('users', fetchAllUsers)
 

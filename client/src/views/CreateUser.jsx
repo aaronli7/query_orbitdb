@@ -7,7 +7,7 @@ import { AppContext } from '../store/app-context'
 import UserForm from '../components/UserForm'
 
 const postUser = async (newUser) =>
-  await (await axios.post('http://172.20.117.7:5000/addPatient', newUser)).data
+  await (await axios.post('http://localhost:5000/addPatient', newUser)).data
 
 function CreateUser() {
   const [flashMessage, setFlashMessage] = useContext(AppContext)
