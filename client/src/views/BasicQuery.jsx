@@ -16,32 +16,30 @@ function BasicQuery() {
 
   const { data, error, status } = useQuery('users', fetchAllUsers)
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert(`The query age was: ${queryAge}`)
-  }
+  // const handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   alert(`The query age was: ${queryAge}`)
+  // }
 
   return (
     <div>
       <h2 className="mb-4">EHRs Query Example</h2>
       <div>
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}> */}
         <label>
           Query patients whose age older than:
-          <input 
+        </label>
+        <input 
             type="number" 
             name="age" 
             onChange={(e)=>setQueryAge(e.target.value)}
           />
-        </label>
-        <button className="bg-teal-800 border-teal-800 shadow-md text-white btn hover:bg-gray-100 hover:border-2 hover:text-teal-900"
-            type="submit"> Query </button>
-      </form>
+      {/* </form> */}
       <Link
-          to="/ageOldThan"
+          to={`/ageOldThan/${queryAge}`}
           className="px-4 py-1 font-semibold text-teal-900 border-2 border-teal-700 rounded hover:border-none hover:bg-teal-800 hover:text-white"
         >
-          Hard query
+        <button> Query </button>
       </Link>
 
       </div>

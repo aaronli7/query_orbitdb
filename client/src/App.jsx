@@ -29,9 +29,10 @@ function App() {
               <Route path="/" exact>
                 <BasicQuery />
               </Route>
-              <Route path="/ageOldThan">
-                <AgeQuery />
-              </Route>
+              <Route exact path="/ageOldThan/:age"
+              render={(props) => (
+                <AgeQuery age={props.match.params.age}/>
+              )}/>
               <Route path="/paginated">
                 <PaginatedQuery />
               </Route>

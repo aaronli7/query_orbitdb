@@ -65,15 +65,11 @@ app.get('/showPatients', async (req, res)=>{
     res.json(result)
 })
 
-app.get('/queryAge', async (req, res)=>{
-    await initOrbit()
-    console.log("Query the patients age")
-    // const result = await queryAge(req.body.age)
-
-    // hard query should be fixed. aran-lq
-    const result = await queryAge()
+app.post('/queryAge', async (req, res)=>{
+    const query_age = req.body.age
+    console.log("request age query:", query_age)
+    const result = await queryAge(query_age)
     console.log(result)
-    // res.send({users: result})
     res.json(result)
 })
 
