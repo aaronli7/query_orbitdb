@@ -76,10 +76,15 @@ app.post('/queryAge', async (req, res)=>{
 app.post('/addPatient', async (req, res)=>{
     console.log(`add new patient info: {req.body}`)
     await addPatient(req.body)
-    res.send({message: "Add succeed"})
+    res.send(req.body)
 })
 
 app.get('/helloworld', async (req, res)=>{
+    console.log("helloworld test")
+    res.send({message: "hello world test"})
+})
+
+app.get('/editUser/:id', async (req, res)=>{
     console.log("helloworld test")
     res.send({message: "hello world test"})
 })
