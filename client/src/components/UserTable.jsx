@@ -55,13 +55,13 @@ function UserTable({ users }) {
       <td className="inline-flex border-none">
         <Link
           className="p-2 text-cyan-800 hover:text-cyan-500"
-          to={`/user/edit/${user.id}`}
+          to={`/user/edit/${user._id}`}
         >
           <EditIcon />
         </Link>
         <button
           className="p-2 text-cyan-800 hover:text-cyan-500"
-          onClick={() => showDeleteModal(user.id)}
+          onClick={() => showDeleteModal(user._id)}
         >
           <DeleteIcon />
         </button>

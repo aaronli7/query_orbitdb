@@ -3,11 +3,11 @@ import axios from 'axios'
 import { useQuery, useMutation } from 'react-query'
 import { useParams, Redirect } from 'react-router-dom'
 
-import UserForm from '../components/UserForm'
+import EditUserForm from '../components/EditUserForm'
 
 const fetchUser = async ({ queryKey }) => {
   const [_key, { id }] = queryKey
-  const response = await fetch(`http://localhost:3004/users/${id}`)
+  const response = await fetch(`http://localhost:5000/users/${id}`)
 
   if (!response.ok) {
     throw new Error(response.statusText)
@@ -23,8 +23,9 @@ function EditUser() {
     fetchUser
   )
 
+
   const mutation = useMutation((updatedUser) =>
-    axios.put(`http://localhost:3004/users/${id}`, updatedUser)
+    axios.post(`http://localhost:5000/users/${id}`, updatedUser)
   )
 
   const { isSuccess } = mutation
@@ -37,6 +38,7 @@ function EditUser() {
     return <Redirect to="/" />
   }
 
+  // console.log(data)
   return (
     <div>
       <h2>Edit User</h2>
@@ -46,7 +48,7 @@ function EditUser() {
         {isLoading && <div>Loading...</div>}
 
         {data && (
-          <UserForm user={data} submitText="Update" submitAction={onSubmit} />
+          <EditUserForm user={data[0]} submitText="Update" submitAction={onSubmit} />
         )}
       </div>
     </div>

@@ -55,13 +55,23 @@ async function addPatient(info){
     await db.put({'_id': info.id, first_name:info.first_name, last_name: info.last_name, Email: info.email, age: info.age, gender: info.gender})
 }
 
+async function queryPatient(id){
+    const db = await dbEHR.docs(dbName)
+    await db.load()
+    const result = await db.get(id)
+    return result
+}
+
+async function updatePatient(info){
+    const db = await dbEHR.docs(dbName)
+    await db.load()
+    await db.put({'_id': info._id, first_name: info.first_name, last_name: info.last_name, Email: info.Email, age: info.age, gender: info.gender})
+}
+
 
 app.get('/showPatients', async (req, res)=>{
     await initOrbit()
-    console.log("Query the patients info")
     const result = await showPatients()
-    console.log(result)
-    // res.send({users: result})
     res.json(result)
 })
 
@@ -84,9 +94,17 @@ app.get('/helloworld', async (req, res)=>{
     res.send({message: "hello world test"})
 })
 
-app.get('/editUser/:id', async (req, res)=>{
-    console.log("helloworld test")
-    res.send({message: "hello world test"})
+// Edit patient endpoint
+app.get('/users/:id', async (req, res)=>{
+    const query_id = req.params.id
+    const result = await queryPatient(query_id)
+    console.log(result)
+    res.json(result)
+})
+
+app.post('/users/:id', async (req, res)=>{
+    await updatePatient(req.body)
+    res.send({message: "patient update succeed."})
 })
 
 
