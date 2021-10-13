@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom'
 import UserTable from '../components/UserTable'
 import axios from 'axios'
 
-const ipaddr = '172.20.117.7:5000'
-
 function BasicQuery() {
   const [queryAge, setQueryAge] = useState(0)
 
@@ -33,6 +31,7 @@ function BasicQuery() {
             type="number" 
             name="age" 
             onChange={(e)=>setQueryAge(e.target.value)}
+            required
           />
       {/* </form> */}
       <Link

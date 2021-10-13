@@ -68,6 +68,13 @@ async function updatePatient(info){
     await db.put({'_id': info._id, first_name: info.first_name, last_name: info.last_name, Email: info.Email, age: info.age, gender: info.gender})
 }
 
+async function deletePatient(id){
+    const db = await dbEHR.docs(dbName)
+    await db.load()
+    const hash = await db.del(id)
+    return hash
+}
+
 
 app.get('/showPatients', async (req, res)=>{
     await initOrbit()
@@ -104,7 +111,13 @@ app.get('/users/:id', async (req, res)=>{
 
 app.post('/users/:id', async (req, res)=>{
     await updatePatient(req.body)
-    res.send({message: "patient update succeed."})
+    res.send({message: "patient update successfully."})
+})
+
+app.delete('/users/:id', async (req, res)=>{
+    const hash = await deletePatient(req.params.id)
+    console.log("delete hash:", hash)
+    res.send({message: "patient delete successfully."})
 })
 
 

@@ -20,7 +20,7 @@ function UserTable({ users }) {
   const queryClient = useQueryClient()
 
   const deleteMutation = useMutation(
-    (id) => axios.delete(`http://localhost:3004/users/${id}`),
+    (id) => axios.delete(`http://localhost:5000/users/${id}`),
     {
       onSuccess: () => {
         queryClient.invalidateQueries()
