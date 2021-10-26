@@ -1,9 +1,9 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import createIpfsHttpClient from 'react-router-dom'
-// import { create } from 'ipfs-http-client'
-// import {useState} from 'react'
+import {useHistory} from 'react-router-dom'
+import {useState} from 'react'
 import './form.css'
+import { create } from 'ipfs-http-client'
 
 
 // Save the image into IPFS
