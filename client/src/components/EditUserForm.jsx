@@ -1,8 +1,9 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { useHistory } from 'react-router-dom'
-
 import './form.css'
+
+// const client = create('https://ipfs.infura.io:5001/api/v0')
 
 // Save the image into IPFS
 let saveImageOnIpfs = (reader) => {

@@ -1,8 +1,24 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { useHistory } from 'react-router-dom'
-
+import createIpfsHttpClient from 'react-router-dom'
+// import { create } from 'ipfs-http-client'
+// import {useState} from 'react'
 import './form.css'
+
+
+// Save the image into IPFS
+let saveImageOnIpfs = (reader) => {
+  return new Promise(function(resolve, reject) {
+    const buffer = Buffer.from(reader.result);
+    ipfs.add(buffer).then((response) => {
+      console.log(response)
+      resolve(response[0].hash);
+    }).catch((err) => {
+      console.error(err)
+      reject(err);
+    })
+  })
+}
 
 function UserForm({ user, submitText, submitAction }) {
   const {
@@ -97,6 +113,19 @@ function UserForm({ user, submitText, submitAction }) {
             {errors.number &&
               errors.number.type === 'required' &&
               'Age is required'}
+          </span>
+          </div>
+        </section>
+
+        <section className="mt-2 md:mt-0 md:ml-2">
+          <div>
+          <label htmlFor="EHR">Medical record upload</label>
+          <input 
+            type="file" ref="file" id="file" name="file" multiple="multiple"
+            {...register('EHR', { required: true, })}
+          />
+          <span className="errors">
+            {errors.EHR && 'File is required!'}
           </span>
           </div>
         </section>

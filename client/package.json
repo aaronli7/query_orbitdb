@@ -18,7 +18,8 @@
     "url": "https://github.com/brandiqa/react-query-example"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.4",
+    "ipfs-http-client": "^53.0.1",
     "jshint": "^2.13.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",

@@ -13,6 +13,8 @@ import PaginatedQuery from './views/PaginatedQuery'
 import CreateUser from './views/CreateUser'
 import EditUser from './views/EditUser'
 import DataRequestor from './views/DataRequestor'
+// import { create } from 'ipfs-http-client'
+
 
 function App() {
   // Create a client
