@@ -4,6 +4,20 @@ import { useHistory } from 'react-router-dom'
 
 import './form.css'
 
+// Save the image into IPFS
+let saveImageOnIpfs = (reader) => {
+  return new Promise(function(resolve, reject) {
+    const buffer = Buffer.from(reader.result);
+    ipfs.add(buffer).then((response) => {
+      console.log(response)
+      resolve(response[0].hash);
+    }).catch((err) => {
+      console.error(err)
+      reject(err);
+    })
+  })
+}
+
 function UserForm({ user, submitText, submitAction }) {
   const {
     register,
@@ -75,7 +89,7 @@ function UserForm({ user, submitText, submitAction }) {
           </div>
         </section>
 
-        <section className="flex flex-col field md:flex-row">
+        <section className="flex-col field md:flex-row">
           <div>
           <label htmlFor="gender">Gender</label>
           <select {...register('gender', { required: true })}>
@@ -85,6 +99,19 @@ function UserForm({ user, submitText, submitAction }) {
           </select>
           <span className="errors">
             {errors.gender && 'Gender is required'}
+          </span>
+          </div>
+        </section>
+
+        <section className="mt-2 md:mt-0 md:ml-2">
+          <div>
+          <label htmlFor="EHR">Medical record upload</label>
+          <input 
+            type="file" ref="file" id="file" name="file" multiple="multiple"
+            {...register('EHR', { required: true, })}
+          />
+          <span className="errors">
+            {errors.EHR && 'File is required!'}
           </span>
           </div>
         </section>
