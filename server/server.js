@@ -21,11 +21,11 @@ async function initOrbit(){
         await db.load()
         console.log("db address:", db.address.toString())
     
-        await db.put({'_id': '1', first_name:'Siffre', last_name: 'Timmes', Email: 'stimmes0@nasa.gov', age: 18, gender: 'Male'})
-        await db.put({'_id': '2', first_name:'Fonzie', last_name: 'Coggen', Email: 'fcoggen1@weather.com', age: 20, gender: 'Female'})
-        await db.put({'_id': '3', first_name:'Shell', last_name: 'Kos', Email: 'skos2@prweb.com', age: 22, gender: 'Female'})
-        await db.put({'_id': '4', first_name:'Matthiew', last_name: 'Rasell', Email: 'mrasell3@oaic.gov.au', age: 24, gender: 'Female'})
-        await db.put({'_id': '5', first_name:'Phillipe', last_name: 'Sedgwick', Email: 'psedgwick4@sciencedirect.com', age: 26, gender: 'Male'})
+        await db.put({'_id': '1', first_name:'Siffre', last_name: 'Timmes', Email: 'stimmes0@nasa.gov', age: 18, gender: 'Male', ipfsURL: 'Qmsiffle'})
+        await db.put({'_id': '2', first_name:'Fonzie', last_name: 'Coggen', Email: 'fcoggen1@weather.com', age: 20, gender: 'Female', ipfsURL: 'QmFonzie'})
+        await db.put({'_id': '3', first_name:'Shell', last_name: 'Kos', Email: 'skos2@prweb.com', age: 22, gender: 'Female', ipfsURL: 'QmShell'})
+        await db.put({'_id': '4', first_name:'Matthiew', last_name: 'Rasell', Email: 'mrasell3@oaic.gov.au', age: 24, gender: 'Female', ipfsURL: 'QmMatthiew'})
+        await db.put({'_id': '5', first_name:'Phillipe', last_name: 'Sedgwick', Email: 'psedgwick4@sciencedirect.com', age: 26, gender: 'Male', ipfsURL: 'QmPhillipe'})
     }
     else{
         db = await dbEHR.docs(dbName)
@@ -52,7 +52,7 @@ async function queryAge(age=23){
 async function addPatient(info){
     const db = await dbEHR.docs(dbName)
     await db.load()
-    await db.put({'_id': info.id, first_name:info.first_name, last_name: info.last_name, Email: info.email, age: info.age, gender: info.gender})
+    await db.put({'_id': info.id, first_name:info.first_name, last_name: info.last_name, Email: info.email, age: info.age, gender: info.gender, ipfsURL: info.ipfs_url})
 }
 
 async function queryPatient(id){
@@ -65,7 +65,7 @@ async function queryPatient(id){
 async function updatePatient(info){
     const db = await dbEHR.docs(dbName)
     await db.load()
-    await db.put({'_id': info._id, first_name: info.first_name, last_name: info.last_name, Email: info.Email, age: info.age, gender: info.gender})
+    await db.put({'_id': info._id, first_name: info.first_name, last_name: info.last_name, Email: info.Email, age: info.age, gender: info.gender, ipfsURL: info.ipfs_url})
 }
 
 async function deletePatient(id){

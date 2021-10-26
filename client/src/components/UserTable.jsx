@@ -52,6 +52,7 @@ function UserTable({ users }) {
       <td className="hover:underline">{user.Email}</td>
       <td>{user.age}</td>
       <td>{user.gender}</td>
+      <td>{user.ipfsURL}</td>
       <td className="inline-flex border-none">
         <Link
           className="p-2 text-cyan-800 hover:text-cyan-500"
@@ -95,6 +96,7 @@ function UserTable({ users }) {
             <th className="w-3/12">Email</th>
             <th className="w-3/12">Age</th>
             <th className="w-1/12">Gender</th>
+            <th className="2-1/12">ipfsURL</th>
             <th className="w-1/12">Action</th>
           </tr>
         </thead>
