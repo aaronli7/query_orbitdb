@@ -118,17 +118,25 @@ function UserForm({ user, submitText, submitAction }) {
 
         <section className="mt-2 md:mt-0 md:ml-2">
           <div>
-          <label htmlFor="EHR">Medical record upload</label>
-          <input 
-            type="file" 
-            onChange={uploadIPFS}
-          />
-          <br/>
-          <label>IPFS url:</label>
-          <p>{fileUrl}</p>
-          <span className="errors">
-            {errors.EHR && 'File is required!'}
-          </span>
+            <label htmlFor="EHR">Medical record upload</label>
+            <input 
+              type="file" 
+              onChange={uploadIPFS}
+            />
+          </div>
+        </section>
+
+        <section className="flex-col field md:flex-row">
+          <div>
+            <label htmlFor="ipfs_url">IPFS URL</label>
+            <input
+              type="text"
+              value={fileUrl}
+              {...register('ipfs_url', { required: true })}
+            />
+            <span className="errors">
+              {errors.ipfs_url && 'IPFS URL is required!'}
+            </span>
           </div>
         </section>
         
