@@ -5,20 +5,7 @@ import {useState} from 'react'
 import './form.css'
 import { create } from 'ipfs-http-client'
 
-
-// Save the image into IPFS
-let saveImageOnIpfs = (reader) => {
-  return new Promise(function(resolve, reject) {
-    const buffer = Buffer.from(reader.result);
-    ipfs.add(buffer).then((response) => {
-      console.log(response)
-      resolve(response[0].hash);
-    }).catch((err) => {
-      console.error(err)
-      reject(err);
-    })
-  })
-}
+const client = create('https://ipfs.infura.io:5001/api/v0')
 
 function UserForm({ user, submitText, submitAction }) {
   const {
@@ -30,6 +17,18 @@ function UserForm({ user, submitText, submitAction }) {
   })
 
   const history = useHistory()
+  const [fileUrl, updateFileUrl] = useState(``)
+
+  async function uploadIPFS(e){
+    const file = e.target.files[0]
+    try {
+      const added = await client.add(file)
+      const url = `https://ipfs.infura.io/ipfs/${added.path}`
+      updateFileUrl(url)
+    } catch (error) {
+      console.log('Error uploading file: ', error)
+    }
+  }
 
   return (
     <div>
@@ -121,14 +120,18 @@ function UserForm({ user, submitText, submitAction }) {
           <div>
           <label htmlFor="EHR">Medical record upload</label>
           <input 
-            type="file" ref="file" id="file" name="file" multiple="multiple"
-            {...register('EHR', { required: true, })}
+            type="file" 
+            onChange={uploadIPFS}
           />
+          <br/>
+          <label>IPFS url:</label>
+          <p>{fileUrl}</p>
           <span className="errors">
             {errors.EHR && 'File is required!'}
           </span>
           </div>
         </section>
+        
 
         <div className="flex mt-8 justify-between">
           <button
