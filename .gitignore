@@ -109,3 +109,6 @@ ipfs/
 
 # VScode config
 .vscode/
+
+# truffle blockchain compile
+build/
