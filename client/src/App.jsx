@@ -12,6 +12,7 @@ import InfiniteQuery from './views/InfiniteQuery'
 import PaginatedQuery from './views/PaginatedQuery'
 import CreateUser from './views/CreateUser'
 import EditUser from './views/EditUser'
+import DataRequestor from './views/DataRequestor'
 
 function App() {
   // Create a client
@@ -35,6 +36,9 @@ function App() {
               )}/>
               <Route path="/paginated">
                 <PaginatedQuery />
+              </Route>
+              <Route path="/requestor">
+                <DataRequestor />
               </Route>
               <Route path="/infinite">
                 <InfiniteQuery />

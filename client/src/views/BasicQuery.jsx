@@ -4,6 +4,7 @@ import { useQuery } from 'react-query'
 import { Link } from 'react-router-dom'
 
 import UserTable from '../components/UserTable'
+import WhiteList from '../components/WhiteList'
 import axios from 'axios'
 
 function BasicQuery() {
@@ -50,6 +51,8 @@ function BasicQuery() {
 
         {status === 'success' && <UserTable users={data} />}
       </div>
+      <br />
+      <WhiteList/>
     </div>
   )
 }
