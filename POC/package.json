@@ -1,0 +1,50 @@
+{
+  "name": "orbit-db-pubsub",
+  "version": "0.6.0",
+  "description": "Message propagation module for orbit-db",
+  "main": "index.js",
+  "homepage": "https://github.com/orbitdb/orbit-db-pubsub",
+  "bugs": "https://github.com/orbitdb/orbit-db-pubsub/issues",
+  "keywords": [
+    "orbitdb",
+    "orbit-db",
+    "pubsub"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Haad",
+  "contributors": [
+    "haadcode",
+    "mistakia",
+    "oed",
+    "RichardLitt",
+    "adam-palazzo"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.3",
+    "http": "^0.0.1-security",
+    "ipfs": "^0.61.0",
+    "ipfs-core": "^0.13.0",
+    "ipfs-http-client": "^56.0.0",
+    "ipfs-pubsub-peer-monitor": "~0.0.5",
+    "ipfs-pubsub-room": "^2.0.1",
+    "libp2p": "^0.36.2",
+    "libp2p-gossipsub": "^0.13.0",
+    "libp2p-mplex": "^0.10.7",
+    "libp2p-noise": "^4.0.0",
+    "libp2p-tcp": "^0.17.2",
+    "logplease": "~1.2.14",
+    "n": "^8.0.2",
+    "orbit-db": "^0.28.1",
+    "orbit-db-pubsub": "^0.6.0",
+    "p-series": "^1.1.0"
+  },
+  "localMaintainers": [
+    "haad <haad@haja.io>",
+    "shamb0t <shams@haja.io>",
+    "hajamark <mark@haja.io>"
+  ]
+}
